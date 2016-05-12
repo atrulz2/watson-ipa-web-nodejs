@@ -1,7 +1,7 @@
 'use strict';
 
 // Service names
-var IPA_DIALOG_NAME = "ipa-dialog_service"; // REPLACE with your own name
+var IPA_DIALOG_NAME = "screw_this_dialog_name1415"; // REPLACE with your own name
 var IPA_CLASSIFIER_NAME = "demo_ipa";  // NO NEED TO RENAME THIS ONE unless you want to
 
 // Intent Types
