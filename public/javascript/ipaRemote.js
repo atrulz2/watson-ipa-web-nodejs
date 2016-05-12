@@ -1,7 +1,7 @@
 'use strict';
 
 // Service names
-var IPA_DIALOG_NAME = "demo_ipa3"; // REPLACE with your own name
+var IPA_DIALOG_NAME = "demo_ipa_myG2"; // REPLACE with your own name
 var IPA_CLASSIFIER_NAME = "demo_ipa";  // NO NEED TO RENAME THIS ONE unless you want to
 
 // Intent Types
@@ -53,7 +53,7 @@ function retrieveDialogs() {
 
             if (ipaDialog == null) {
                 $dialogsLoading.hide();
-                $dialogsError.find('.errorMsg').html('No dialog named "' + IPA_DIALOG_NAME + '" found in the Dialog service');
+                $dialogsError.find('.errorMsg').html('No dialog nameds "' + IPA_DIALOG_NAME + '" found in the Dialog service');
                 $dialogsError.show();
             }else{
                 retrieveClassifiers();
