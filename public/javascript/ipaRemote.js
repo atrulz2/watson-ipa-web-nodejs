@@ -1,8 +1,11 @@
 'use strict';
 
 // Service names
-var IPA_DIALOG_NAME = "ipa-dialog_service"; // REPLACE with your own name
-var IPA_CLASSIFIER_NAME = "demo_ipa";  // NO NEED TO RENAME THIS ONE unless you want to
+var IPA_DIALOG_NAME = "dialog-service-1415"; // REPLACE with your own name
+var IPA_CLASSIFIER_NAME = "dialog-service-1415";  // NO NEED TO RENAME THIS ONE unless you want to
+
+var find_dialog_name = "";
+var find_classifier_name = "";
 
 // Intent Types
 var INTENT_TYPE_DIALOG_EMAIL = "action-email-create";
@@ -41,10 +44,11 @@ function retrieveDialogs() {
     $dialogsLoading.show();
     $dialogsError.hide();
 
-    $.get('/proxy/api/v1/dialogs')
+    $.get('/proxy/api/v1/dialogs?proxyType=dialog')
         .done(function(data) {
             if (data != '') {
                 data.dialogs.forEach(function(dialog, index) {
+					find_dialog_name = dialog.name;
                     if (dialog.name == IPA_DIALOG_NAME) {
                         ipaDialog = dialog;
                     }
@@ -53,7 +57,7 @@ function retrieveDialogs() {
 
             if (ipaDialog == null) {
                 $dialogsLoading.hide();
-                $dialogsError.find('.errorMsg').html('No dialog nameds "' + IPA_DIALOG_NAME + '" found in the Dialog service');
+                $dialogsError.find('.errorMsg').html('No dialog named "' + IPA_DIALOG_NAME + " " + find_dialog_name + '" found in the Dialog service');
                 $dialogsError.show();
             }else{
                 retrieveClassifiers();
@@ -71,6 +75,7 @@ function retrieveClassifiers() {
         .done(function(data) {
             if (data != '') {
                 data.classifiers.forEach(function(classifier, index) {
+					find_classifier_name =classifier.name;
                     if (classifier.name == IPA_CLASSIFIER_NAME) {
                         ipaNlcClassifier = classifier;
                     }
@@ -79,7 +84,7 @@ function retrieveClassifiers() {
 
             if (ipaNlcClassifier == null) {
                 $dialogsLoading.hide();
-                $dialogsError.find('.errorMsg').html('No NLC classifier named "' + IPA_CLASSIFIER_NAME + '" found in the NLC service');
+                $dialogsError.find('.errorMsg').html('No NLC classifier named "' + IPA_CLASSIFIER_NAME + " " + find_classifier_name +  '" found in the NLC service');
                 $dialogsError.show();
             }else{
                 initConversation(true);
