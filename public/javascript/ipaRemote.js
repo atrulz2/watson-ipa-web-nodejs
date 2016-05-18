@@ -1,7 +1,7 @@
 'use strict';
 
 // Service names
-var IPA_DIALOG_NAME = "dialog-service-1415161718"; // REPLACE with your own name
+var IPA_DIALOG_NAME = "dialog-service-11"; // REPLACE with your own name
 var IPA_CLASSIFIER_NAME = "nlc-service-11";  // NO NEED TO RENAME THIS ONE unless you want to
 
 var find_dialog_name = "";
